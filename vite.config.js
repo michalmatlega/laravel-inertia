@@ -2,11 +2,18 @@ import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
+import fs from 'fs';
 
 export default defineConfig({
     server: {
-        host: '0.0.0.0',
+        host: 'app',
+        origin: 'https://lar.local:5173',
         port: 5173,
+        https: {
+            cert: fs.readFileSync('./nginx/ssl/lar.local.pem'), // Path to your SSL key
+            key: fs.readFileSync('./nginx/ssl/lar.local-key.pem'), // Path to your SSL certificate
+        },
+        cors: true,
     },
     plugins: [
         laravel({

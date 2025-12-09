@@ -36,7 +36,7 @@ RUN pecl install redis && docker-php-ext-enable redis
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 # Install Node.js v22
-RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
+RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash - \
     && apt-get install -y nodejs
 
 # Install pnpm globally
